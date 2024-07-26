@@ -6,7 +6,6 @@ const buildEslintCommand = (filenames) =>
     .join(' --file ')}`;
 
 module.exports = {
-  'src/app/**/*.{js,jsx,ts,tsx}': [buildEslintCommand],
-  'src/app/**/*.{js,jsx,ts,tsx}': 'npm run markuplint',
+  'src/app/**/*.{js,jsx,ts,tsx}': [buildEslintCommand, 'markuplint'],
   '**/*': 'npm run secretlint',
 };
