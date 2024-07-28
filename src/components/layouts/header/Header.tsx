@@ -1,4 +1,3 @@
-'use client';
 import { siteData } from '@/const/siteData';
 
 import Link from 'next/link';

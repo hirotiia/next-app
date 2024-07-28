@@ -1,9 +1,7 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
 import './globals.css';
 import { Header } from '@/components/layouts/Header/Header';
-
-const inter = Inter({ subsets: ['latin'] });
+import { notoSansJP } from '@@/utils/fonts';
 
 export const metadata: Metadata = {
   title: 'テックのーと',
@@ -17,8 +15,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
-      <Header></Header>
-      <body className={inter.className}>{children}</body>
+      <body className={notoSansJP.className}>
+        <Header></Header>
+        {children}
+      </body>
     </html>
   );
 }
