@@ -2,10 +2,11 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { Header } from '@/components/layouts/Header/Header';
 import { notoSansJP } from '@@/utils/fonts';
+import { siteData } from '@/const/siteData';
 
 export const metadata: Metadata = {
-  title: 'テックのーと',
-  description: '技術系のアウトプットのためのブログです。',
+  title: siteData.title,
+  description: siteData.description,
 };
 
 export default function RootLayout({
