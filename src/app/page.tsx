@@ -1,40 +1,25 @@
 'use client';
 
 import { HeadingLv1 } from '@/components/elements/Heading/HeadingLv1';
-import { ChangeEvent, useState } from 'react';
-
-type CartObj = {
-  item: string;
-  count: number;
-};
+import { useState } from 'react';
 
 export default function Home() {
-  const cartObj: CartObj = {
-    item: 'apple',
-    count: 10,
-  };
-  const [cart, setCart] = useState(cartObj);
-  const setItem = (e: ChangeEvent<HTMLInputElement>) => {
-    setCart((cart) => ({ ...cart, item: e.target.value }));
-  };
+  const array = [1, 2, 3, 4, 5];
+  const [shuffledArray, setShuffle] = useState(array);
+  const shuffle = () => {
+    const sortedArray = shuffledArray.sort(() => Math.random() - 0.5);
 
-  const increment = () => {
-    setCart((cart) => ({ ...cart, count: cart.count + 1 }));
+    setShuffle([...sortedArray]);
   };
-
-  const decrement = () => {
-    setCart((cart) => ({ ...cart, count: cart.count - 1 }));
-  };
-
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <HeadingLv1 title={'トップページ'} />
-
-      <p>item: {cart.item}</p>
-      <p>count: {cart.count}</p>
-      <input type="text" value={cart.item} onChange={setItem} />
-      <button onClick={increment}>+</button>
-      <button onClick={decrement}>-</button>
+      <p>
+        <b>{shuffledArray}</b>
+      </p>
+      <button type="button" onClick={shuffle}>
+        shuffle
+      </button>
     </main>
   );
 }
