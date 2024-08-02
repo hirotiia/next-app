@@ -9,8 +9,8 @@ export const GlobalNav = () => {
   return (
     <nav>
       <ul>
-        {navItems.map((item, index) => (
-          <li key={`${item.title}-${index}`}>
+        {navItems.map((item) => (
+          <li key={`${item.title}`}>
             <Link href={item.url}>{item.title}</Link>
           </li>
         ))}
