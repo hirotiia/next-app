@@ -2,45 +2,48 @@
 
 import { ChangeEvent, useState } from 'react';
 
-type Product = {
+type Products = {
   name: string;
   price: number;
   checked: boolean;
 };
 
 type CartProductsProps = {
-  products: Product[];
+  products: Products[];
 };
 
 export const Cart = ({ products }: CartProductsProps) => {
   const [status, changeCheckedStatus] = useState(products);
 
   const sumPriceHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    const { checked, value } = e.target;
+    const isChecked = e.target.checked;
+    const { value } = e.target;
 
-    if (checked) {
+    if (isChecked) {
       changeCheckedStatus((prevstatus) =>
-        prevstatus.map((product) => (product.name === value ? { ...product, checked } : product)),
+        prevstatus.map((product) =>
+          product.name === value ? { ...product, checked: true } : { ...product },
+        ),
+      );
+    } else {
+      changeCheckedStatus((prevstatus) =>
+        prevstatus.map((product) =>
+          product.name === value ? { ...product, checked: false } : { ...product },
+        ),
       );
     }
   };
 
   const totalAmount = status
-    .filter((product) => product.checked)
-    .reduce((sum, product) => sum + product.price, 0);
+    .filter((product) => product.checked === true)
+    .reduce((sum, product) => (sum += product.price), 0);
 
   return (
     <div>
       {status.map((product) => (
         <label key={product.name}>
           {product.name}
-          <input
-            type="checkbox"
-            name="product"
-            value={product.name}
-            checked={product.checked}
-            onChange={sumPriceHandler}
-          />
+          <input type="checkbox" name="product" value={product.name} onChange={sumPriceHandler} />
         </label>
       ))}
       <p>
