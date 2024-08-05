@@ -18,19 +18,9 @@ export const Cart = ({ products }: CartProductsProps) => {
   const sumPriceHandler = (e: ChangeEvent<HTMLInputElement>) => {
     const { checked, value } = e.target;
 
-    if (checked) {
-      changeCheckedStatus((prevstatus) =>
-        prevstatus.map((product) =>
-          product.name === value ? { ...product, checked: true } : { ...product },
-        ),
-      );
-    } else {
-      changeCheckedStatus((prevstatus) =>
-        prevstatus.map((product) =>
-          product.name === value ? { ...product, checked: false } : { ...product },
-        ),
-      );
-    }
+    changeCheckedStatus((prevStatus) =>
+      prevStatus.map((product) => (product.name === value ? { ...product, checked } : product)),
+    );
   };
 
   const totalAmount = status
