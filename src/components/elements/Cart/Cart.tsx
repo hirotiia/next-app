@@ -16,10 +16,9 @@ export const Cart = ({ products }: CartProductsProps) => {
   const [status, changeCheckedStatus] = useState(products);
 
   const sumPriceHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    const isChecked = e.target.checked;
-    const { value } = e.target;
+    const { checked, value } = e.target;
 
-    if (isChecked) {
+    if (checked) {
       changeCheckedStatus((prevstatus) =>
         prevstatus.map((product) =>
           product.name === value ? { ...product, checked: true } : { ...product },
