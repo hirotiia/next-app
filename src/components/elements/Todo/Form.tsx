@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { FormEvent, useState } from 'react';
 
 type Todo = {
   id: number;
@@ -13,7 +13,7 @@ type AddTodo = {
 
 export const Form = ({ addTodo }: AddTodo) => {
   const [enteredTodo, setEnteredTodo] = useState('');
-  const clickHandler = (e: SubmitEvent) => {
+  const clickHandler = (e: FormEvent<HTMLFormElement>) => {
     // Form要素のデフォルトの挙動のリクエストを送って画面を更新する動作を打ち消すため
     e.preventDefault();
 
