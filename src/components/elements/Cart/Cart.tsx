@@ -35,7 +35,7 @@ export const Cart = ({ products }: CartProductsProps) => {
   };
 
   const totalAmount = status
-    .filter((product) => product.checked === true)
+    .filter((product) => product.checked)
     .reduce((sum, product) => (sum += product.price), 0);
 
   return (
