@@ -12,17 +12,20 @@ type CartProductsProps = {
   products: Products[];
 };
 
+/** チェックがついた果物の価格を合算して合計金額を出力する関数 */
 export const Cart = ({ products }: CartProductsProps) => {
-  const [status, changeCheckedStatus] = useState(products);
+  const [status, updateProductStatus] = useState(products);
 
+  /** 商品情報のデータをアップデートする関数 */
   const sumPriceHandler = (e: ChangeEvent<HTMLInputElement>) => {
     const { checked, value } = e.target;
 
-    changeCheckedStatus((prevStatus) =>
+    updateProductStatus((prevStatus) =>
       prevStatus.map((product) => (product.name === value ? { ...product, checked } : product)),
     );
   };
 
+  /** チェックが入った商品の合計金額を合算する関数 */
   const totalAmount = status
     .filter((product) => product.checked)
     .reduce((sum, product) => (sum += product.price), 0);
