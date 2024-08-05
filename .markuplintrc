@@ -5,7 +5,7 @@
   "parser": {
     "\\.[jt]sx?$": "@markuplint/jsx-parser"
   },
-    "extends": [
+  "extends": [
     "markuplint:recommended-react"
   ]
 }
