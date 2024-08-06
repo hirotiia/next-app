@@ -26,7 +26,7 @@ export const Todo = ({ items }: TodoItemList) => {
   return (
     <>
       <p>Todo.tsx</p>
-      <div className="border-black-300 border-2 border-solid">
+      <div className="border-2 border-solid">
         <h2 className="text-center text-5xl">Todo App</h2>
         <Form addTodo={addTodo} />
         <List items={todos} deleteTodo={deleteTodo} />

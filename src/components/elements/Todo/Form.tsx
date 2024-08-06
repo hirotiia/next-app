@@ -21,14 +21,14 @@ export const Form = ({ addTodo }: AddTodo) => {
       id: Math.floor(Math.random() * 1e5),
       content: enteredTodo,
     };
-    addTodo(newTodo);
 
+    addTodo(newTodo);
     setEnteredTodo('');
   };
   return (
     <>
       <p>Form.tsx</p>
-      <form className="border-black-300 border-2 border-solid" onSubmit={clickHandler}>
+      <form className="border-2 border-solid" onSubmit={clickHandler}>
         <label>
           タスク名を入力してください
           <input

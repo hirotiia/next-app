@@ -16,7 +16,7 @@ export const List = ({ items, deleteTodo }: TodoItemList) => {
   return (
     <>
       <p>List.tsx</p>
-      <ul aria-busy="true" className="border-black-300 border-2 border-solid">
+      <ul aria-busy="true" className="border-2 border-solid">
         {items.map((item) => (
           <li key={item.id}>
             <button type="button" onClick={() => complete(item.id)}>
