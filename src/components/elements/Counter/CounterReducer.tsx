@@ -1,12 +1,13 @@
-type State = {
+export type State = {
   result: number;
 };
 
-type Action = {
+export type Action = {
   type: string;
   amount: number;
 };
 
-export const CounterReducer = (state: State, { type, amount }: Action) => {
-  console.log(state, type, amount);
+export const CounterReducer = (state: State, { type, amount }: Action): State => {
+  console.log(type, amount);
+  return state;
 };

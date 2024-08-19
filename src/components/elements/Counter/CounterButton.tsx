@@ -11,10 +11,8 @@ type CounterButtonProps = {
   countNumbers: CountNumber[];
 };
 
-type Dispatch = [null, (action: { type: string; amount: number }) => void];
-
 export const CounterButton = ({ countNumbers }: CounterButtonProps) => {
-  const [, dispatch]: Dispatch = useContext(CounterContext);
+  const [, dispatch] = useContext(CounterContext);
   const counterHandler = (event: MouseEvent<HTMLButtonElement>) => {
     const { currentTarget } = event;
     const { type } = currentTarget.dataset;
