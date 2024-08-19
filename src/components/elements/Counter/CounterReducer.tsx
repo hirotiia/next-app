@@ -8,6 +8,12 @@ export type Action = {
 };
 
 export const CounterReducer = (state: State, { type, amount }: Action): State => {
-  console.log(type, amount);
-  return state;
+  switch (type) {
+    case 'plus':
+      return { ...state, result: state.result + amount };
+    case 'minus':
+      return { ...state, result: state.result - amount };
+    default:
+      return state;
+  }
 };

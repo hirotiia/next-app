@@ -8,5 +8,6 @@ export const CounterResult = () => {
   }
 
   const [rstate] = contextValue;
+
   return <p className="">合計：{rstate.result}</p>;
 };

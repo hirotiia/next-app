@@ -16,12 +16,14 @@ export const CounterButton = ({ countNumbers }: CounterButtonProps) => {
   const counterHandler = (event: MouseEvent<HTMLButtonElement>) => {
     const { currentTarget } = event;
     const { type } = currentTarget.dataset;
-    const { amount } = currentTarget.dataset;
+    const amount = Number(currentTarget.dataset.amount);
 
-    if (typeof type === 'string' && typeof amount === 'number') {
-      dispatch({ type, amount });
+    if (!type || !amount) {
+      return;
     }
+    dispatch({ type, amount });
   };
+
   return (
     <ul>
       {countNumbers.map((count) => (

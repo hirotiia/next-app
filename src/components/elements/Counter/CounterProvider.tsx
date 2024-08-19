@@ -6,9 +6,11 @@ type ContextProps = {
 };
 
 type CounterContextType = [State, Dispatch<Action>];
+
 const initialState = {
   result: 0,
 };
+
 export const CounterContext = createContext<CounterContextType>([initialState, () => {}]);
 export const CounterProvider = ({ children }: ContextProps) => {
   const [rstate, dispatch] = useReducer(CounterReducer, initialState);
