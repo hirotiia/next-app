@@ -2,7 +2,7 @@
 
 import { CounterButton } from './CounterButton';
 import { CounterResult } from './CounterResult';
-import { CounterProvider } from './CounterProvider';
+import { CounterContext } from './CounterContext';
 
 export const Counter = () => {
   const countNumbers = [
@@ -12,9 +12,9 @@ export const Counter = () => {
     { id: 'd', type: 'plus', amount: 10 },
   ];
   return (
-    <CounterProvider>
+    <CounterContext>
       <CounterResult />
       <CounterButton countNumbers={countNumbers} />
-    </CounterProvider>
+    </CounterContext>
   );
 };

@@ -14,6 +14,6 @@ export const CounterReducer = (state: State, { type, amount }: Action): State =>
     case 'minus':
       return { ...state, result: state.result - amount };
     default:
-      return state;
+      throw new Error('不明なアクションです。');
   }
 };

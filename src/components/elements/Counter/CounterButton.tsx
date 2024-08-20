@@ -1,5 +1,5 @@
 import { MouseEvent, useContext } from 'react';
-import { CounterContext } from './CounterProvider';
+import { DispatchContext } from './CounterContext';
 
 type CountNumber = {
   id: string;
@@ -12,7 +12,7 @@ type CounterButtonProps = {
 };
 
 export const CounterButton = ({ countNumbers }: CounterButtonProps) => {
-  const [, dispatch] = useContext(CounterContext);
+  const dispatch = useContext(DispatchContext);
   const counterHandler = (event: MouseEvent<HTMLButtonElement>) => {
     const { currentTarget } = event;
     const { type } = currentTarget.dataset;
@@ -21,6 +21,7 @@ export const CounterButton = ({ countNumbers }: CounterButtonProps) => {
     if (!type || !amount) {
       return;
     }
+
     dispatch({ type, amount });
   };
 
@@ -34,7 +35,9 @@ export const CounterButton = ({ countNumbers }: CounterButtonProps) => {
             data-amount={count.amount}
             onClick={counterHandler}
           >
-            {`${count.type}${String(count.amount)}`}
+            {count.type === 'minus' && '-'}
+            {count.type === 'plus' && '+'}
+            {`${String(count.amount)}`}
           </button>
         </li>
       ))}
