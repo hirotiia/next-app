@@ -7,7 +7,6 @@ export type ReducerProps = {
 };
 
 export const CalculatorReducer = (rstate: RState, { type, value, name }: ReducerProps): RState => {
-  console.log(rstate);
   switch (type) {
     case 'change':
       return typeof name === 'string' ? { ...rstate, [name]: value } : { ...rstate };
