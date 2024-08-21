@@ -1,11 +1,12 @@
 import { ChangeEvent, useContext } from 'react';
-import { CalculatorDispatchContext } from './CalculatorProvider';
+import { CalculatorContext, CalculatorDispatchContext } from './CalculatorProvider';
 
 type InputProps = {
   name: string;
 };
 
 export const CalculatorInput = ({ name }: InputProps) => {
+  const rstate = useContext(CalculatorContext);
   const dispatch = useContext(CalculatorDispatchContext);
 
   const InputHandler = (e: ChangeEvent<HTMLInputElement>) => {
@@ -18,7 +19,7 @@ export const CalculatorInput = ({ name }: InputProps) => {
     <div>
       <label>
         {name}:
-        <input type="number" name={name} onChange={InputHandler} />
+        <input type="number" name={name} value={rstate[name]} onChange={InputHandler} />
       </label>
     </div>
   );
