@@ -1,8 +1,9 @@
+import { useContext } from 'react';
 import { MemoItem } from './MemoItem';
-import { GetState } from './MemoProvider';
+import { MemoContext } from '@/components/elements/Memo/context/MemoProvider';
 
 export const MemoItems = () => {
-  const state = GetState();
+  const state = useContext(MemoContext);
   return (
     <>
       {state.map((target) => (

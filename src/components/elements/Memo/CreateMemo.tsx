@@ -1,11 +1,13 @@
+'use client';
+
 import { ChangeEvent } from 'react';
 
 export const CreateMemo = () => {
   const InputChangeMemoHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.value);
+    console.log(e);
   };
   return (
-    <form>
+    <form onChange={}>
       <label>
         TODO
         <input type="text" name="todo作成" onChange={InputChangeMemoHandler} />

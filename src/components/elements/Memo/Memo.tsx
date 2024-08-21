@@ -1,6 +1,6 @@
 import { CreateMemo } from './CreateMemo';
 import { MemoItems } from './MemoItems';
-import { MemoProvider } from './MemoProvider';
+import { MemoProvider } from '../Memo/context/MemoProvider';
 
 export const Memo = () => {
   return (

@@ -1,7 +1,7 @@
 'use client';
 
-import { createContext, Dispatch, ReactNode, useContext, useReducer } from 'react';
-import { MemoReducer } from './MemoReducer';
+import { createContext, ReactNode, useContext, useReducer } from 'react';
+import { MemoReducer } from '../context/MemoReducer';
 
 type Props = {
   children: ReactNode;
@@ -14,15 +14,9 @@ const initialState = [
   { id: 2, title: '卵を買う' },
   { id: 3, title: '勉強する' },
 ];
-const MemoContext = createContext<State>(initialState);
-const MemoDispatchContext = createContext<Dispatch<State>>(() => {});
+export const MemoContext = createContext(initialState);
+export const MemoDispatchContext = createContext(() => {});
 
-export const GetState = (): State => {
-  return useContext(MemoContext);
-};
-export const GetDispatch = () => {
-  return useContext(MemoDispatchContext);
-};
 export const MemoProvider = ({ children }: Props) => {
   const [rstate, dispatch] = useReducer(MemoReducer, initialState);
   return (
