@@ -1,16 +1,24 @@
 import { createContext, Dispatch, ReactNode, useReducer } from 'react';
-import { CalculatorReducer } from './CalculatorReducer';
-import { Action } from '../Counter/CounterReducer';
+import { CalculatorReducer, ReducerProps } from './CalculatorReducer';
 
-const initialState = {
+export type RState = {
+  result: number;
+  a: number;
+  b: number;
+  selector: string;
+  type: string;
+};
+
+const initialState: RState = {
   result: 0,
   a: 0,
   b: 0,
   selector: '+',
+  type: 'change',
 };
 
 const CalculatorContext = createContext(initialState);
-const CalculatorDispatchContext = createContext<Dispatch<Action>>(() => {});
+const CalculatorDispatchContext = createContext<Dispatch<ReducerProps>>(() => {});
 
 type ClculatorProviderProps = {
   children: ReactNode;
